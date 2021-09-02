@@ -1,63 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/weather"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        android:id="@+id/abl"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:theme="@style/Theme.Weather.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Weather.PopupOverlay" />
+            android:background="@android:color/transparent"
+            app:popupTheme="@style/Theme.Weather.PopupOverlay" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WEATHER APP"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                />
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/buttons"
+        android:paddingHorizontal="10dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:orientation="horizontal"
-        android:layout_marginTop="62dp"
+        app:layout_constraintTop_toBottomOf="@id/cn"
+        android:layout_marginTop="52dp"
         >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="get city id"
-        android:id="@+id/city_id"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="weather by id"
-        android:id="@+id/weather_by_id"
-        />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            app:cornerRadius="22dp"
+            android:layout_height="match_parent"
             android:text="weather by name"
+            android:textColor="@color/white"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/purple_700"
+            android:layout_weight="1"
             android:id="@+id/weather_by_name"
             />
 
     </LinearLayout>
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:id="@+id/cityName"
-        android:layout_height="44dp"
-        android:hint="City Name"
-        android:layout_marginTop="134dp"/>
-    <ListView
+        android:id="@+id/cn"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        app:hintTextColor="@color/black"
+        android:paddingHorizontal="10dp"
+        app:boxStrokeColor="#006E5A"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/abl"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Enter City Name">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityName"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="7dp"
+            android:layout_height="match_parent"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <ProgressBar
+        android:id="@+id/prog"
+        android:layout_width="40dp"
+        android:visibility="gone"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:padding="24dp"
         android:layout_height="524dp"
         android:id="@+id/report"
-        android:layout_marginTop="180dp"
+        app:layout_constraintTop_toBottomOf="@id/buttons"
+        android:layout_marginTop="10dp"
         />
 
 
@@ -70,4 +107,4 @@
 <!--        android:layout_margin="@dimen/fab_margin"-->
 <!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

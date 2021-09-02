@@ -100,7 +100,7 @@ public class WeatherDataService {
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-              Toast.makeText(context,response.toString(),Toast.LENGTH_SHORT).show();
+//              Toast.makeText(context,response.toString(),Toast.LENGTH_SHORT).show();
                 try {
                     JSONArray consolidated_weather_list= response.getJSONArray("consolidated_weather");
                     for(int i = 0;i<consolidated_weather_list.length();i++){
